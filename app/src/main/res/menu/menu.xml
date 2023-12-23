@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/btn_preview"
+          android:icon="@drawable/preview_ic"
+          android:title="View arduino scash"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/btn_share"
+          android:icon="@drawable/share_ic"
+          android:title="Share scatch"
+          app:showAsAction="ifRoom"/>
+</menu>
