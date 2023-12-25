@@ -1,6 +1,9 @@
 package com.qazar.arduinotoycar
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.content.Intent.*
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -124,7 +127,7 @@ class MainActivity : AppCompatActivity() {
                     println("Неуспешный ответ: ${response.code}")
                 }
             }
-            override fun onFailure(call: Call, e: java.io.IOException) {
+            override fun onFailure(call: Call, e: IOException) {
                 // Обработка ошибки
                 println("Ошибка при выполнении запроса: ${e.message}")
             }
@@ -141,11 +144,21 @@ class MainActivity : AppCompatActivity() {
 
         return when (item.itemId){
             R.id.btn_preview -> {
-                //TODO add preview action
+                val intent : Intent = Intent().apply {
+                    action = Intent.ACTION_VIEW
+                    data = Uri.parse("https://github.com/kz-kvazar/ArduinoToyCar/blob/master/ToyCar.ino")
+                }
+                startActivity(intent)
                 true
             }
             R.id.btn_share -> {
                 //TODO add copy in buffer and share action
+                val intent = Intent().apply {
+                    action = ACTION_SEND
+                    putExtra(EXTRA_TEXT, "https://github.com/kz-kvazar/ArduinoToyCar/blob/master/ToyCar.ino")
+                    type = "text/plain"
+                }
+                startActivity(Intent.createChooser(intent, "Share a link to a sketch with:"))
                 true
             }
             else -> {super.onOptionsItemSelected(item)}
